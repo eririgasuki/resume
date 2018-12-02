@@ -1,0 +1,57 @@
+body{
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+}
+.clearfix{
+    content: '';
+    display: block;
+    clear: both;
+}
+a{
+    text-decoration: none;
+}
+.topNavBar{
+    padding: 20px 16px;
+}
+.topNavBar .logo{
+    float: left;
+    font-size: 24px;
+    padding-top: 3px;
+    padding-bottom: 4px;
+    font-family: Arial Black;
+}
+.logo .rs{
+    margin-right: 4px;
+    color: rgb(232, 103, 107)
+}
+.logo .card{
+    color: rgb(154, 157, 162);
+}
+.topNavBar nav{
+    float: right;
+    padding-top: 7px;
+}
+.topNavBar>nav>ul{
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+.topNavBar>nav>ul>li{
+    float: left;
+    list-style: none;
+    margin: 0 17px;
+    
+}
+.topNavBar>nav>ul>li>a{
+    font-size: 12px;
+    color: #b7b7b7;
+    font-weight: bold;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    display: block;
+    padding: 5px 0;
+}
+.topNavBar>nav>ul>li>a:hover{
+    border-bottom: 3px solid rgb(232, 103, 107);
+}
