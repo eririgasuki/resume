@@ -83,10 +83,86 @@
                 </a>
             </footer>
         </div>
+        <p class="downloadResume-wrapper">
+            <a class="downloadResume" href="">下载 PDF 简历</a>
+        </p>
+        <p class="selfIntroduction">
+            祝长洪， 初级<span class="lineThrough">Ctrl + </span> CV工程师，初级前端学徒，现在饥人谷上前端课程。
+            <br>
+            技能目标： 前端开发， Node.js 开发， 入门级crud boy。
+        </p>
     </main>
-    <div class="undefined">
-        
-    </div>
+    <section class="skills">
+        <h2>技能</h2>
+        <ol class="clearfix">
+            <li>
+                <h3>HTML 5 & CSS 3</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 50%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 20%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>jQuery</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 10%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>Vue.js</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 10%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>React.js</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 10%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>Node.js</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 10%;"></div>
+                </div>
+            </li>
+        </ol>
+    </section>
+    <section class="portfolio">
+        <h2>作品集</h2>
+        <nav>
+            <ol class="clearfix">
+                <li id="portfolio1">所有</li>
+                <li id="portfolio2">框架</li>
+                <li id="portfolio3">原生JS&CSS</li>
+            </ol>
+            <div id="portfolioBar" class="bar state-1">
+                <div class="bar-inner"></div>
+            </div>
+        </nav>
+        <script>
+            portfolio1.onclick = function () {
+                portfolioBar.className = 'bar state-1'
+            }
+            portfolio2.onclick = function () {
+                portfolioBar.className = 'bar state-2'
+            }
+            portfolio3.onclick = function () {
+                portfolioBar.className = 'bar state-3'
+            }
+        </script>
+        <div class="works" style="height: 597px;">
+            <div class="big" style="top: 0; left: 0;"><img src="./img/1.jpg" alt="作品1"></div>
+            <div class="small" style="top: 0; left: 645px;"><img src="./img/2.jpg" alt="作品2"></div>
+            <div class="small" style="top: 312px; left: 645px;"><img src="./img/3.jpg" alt="作品3"></div>
+        </div>
+
+    </section>
 </body>
 
 </html>
