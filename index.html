@@ -16,21 +16,54 @@
             fill: currentColor;
             overflow: hidden;
         }
+
+        .site-welcome {
+            display: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            background-color: #e2e2e2;
+            z-index: 1;
+        }
+
+        .site-welcome.active {
+            display: flex;
+        }
     </style>
 </head>
 
 <body>
-    <div class="topNavBar">
+    <!-- <div id="siteWelcome" class="site-welcome active">
+        <div class="loading"></div>
+    </div> -->
+    <div id="topNavBar" class="topNavBar">
         <div class="topNavBar-inner clearfix">
             <a href="#" class="logo" alt="logo">
                 <span class="rs">RS</span><span class="card">card</span>
             </a>
-            <nav>
+            <nav class="menu">
                 <ul class="clearfix">
-                    <li><a href="#">关于</a></li>
-                    <li><a href="#">技能</a></li>
-                    <li><a href="#">作品</a></li>
-                    <li><a href="#">博客</a></li>
+                    <li><a href="#siteAbout">关于</a></li>
+                    <li><a href="#siteSkills">技能</a></li>
+                    <li>
+                        <a href="#siteWorks">作品</a>
+                        <ul class="submenu">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">博客</a>
+                        <ul class="submenu">
+                            <li>博客1</li>
+                            <li>博客2</li>
+                            <li>博客3</li>
+                        </ul>
+                    </li>
                     <li><a href="#">日历</a></li>
                     <li><a href="#">联系方式</a></li>
                     <li><a href="#">其他</a></li>
@@ -42,7 +75,7 @@
         <div class="mask"></div>
     </div>
     <main>
-        <div class="userCard">
+        <div data-x id="siteAbout" class="userCard">
             <div class="pictureAndText clearfix">
                 <div class="picture">
                     <img src="./img/avatar.jpg" width="299px" height="347" alt="头像">
@@ -92,7 +125,7 @@
             技能目标： 前端开发， Node.js 开发， 入门级crud boy。
         </p>
     </main>
-    <section class="skills">
+    <section data-x id="siteSkills" class="skills">
         <h2>技能</h2>
         <ol class="clearfix">
             <li>
@@ -133,7 +166,7 @@
             </li>
         </ol>
     </section>
-    <section class="portfolio">
+    <section data-x id="siteWorks" class="portfolio">
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -145,6 +178,11 @@
                 <div class="bar-inner"></div>
             </div>
         </nav>
+        <div class="works" style="height: 597px;">
+            <div class="big" style="top: 0; left: 0;"><img src="./img/1.jpg" alt="作品1"></div>
+            <div class="small" style="top: 0; left: 645px;"><img src="./img/2.jpg" alt="作品2"></div>
+            <div class="small" style="top: 312px; left: 645px;"><img src="./img/3.jpg" alt="作品3"></div>
+        </div>
         <script>
             portfolio1.onclick = function () {
                 portfolioBar.className = 'bar state-1'
@@ -156,12 +194,96 @@
                 portfolioBar.className = 'bar state-3'
             }
         </script>
-        <div class="works" style="height: 597px;">
-            <div class="big" style="top: 0; left: 0;"><img src="./img/1.jpg" alt="作品1"></div>
-            <div class="small" style="top: 0; left: 645px;"><img src="./img/2.jpg" alt="作品2"></div>
-            <div class="small" style="top: 312px; left: 645px;"><img src="./img/3.jpg" alt="作品3"></div>
-        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
+        <script>
+            // setTimeout(function () {
+            //     siteWelcome.classList.remove('active')
+            // }, 100);
 
+            let specialTags = document.querySelectorAll('[data-x]')
+            for (let i = 0; i < specialTags.length; i++) {
+                specialTags[i].classList.add('offset')
+            }
+
+            findClosest()
+
+            window.onscroll = function () {
+                if (window.scrollY > 0) {
+                    topNavBar.classList.add('sticky')
+                } else {
+                    topNavBar.classList.remove('sticky')
+                }
+                findClosest()
+            }
+
+            function findClosest() {
+                let specialTags = document.querySelectorAll('[data-x]')
+                let minIndex = 0
+                for (let i = 1; i < specialTags.length; i++) {
+                    if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop -
+                            window.scrollY))
+                        minIndex = i
+                }
+                specialTags[minIndex].classList.remove('offset')
+                let id = specialTags[minIndex].id
+                let a = document.querySelector('a[href="#' + id + '"]')
+                let li = a.parentNode
+                let brothersAndMe = li.parentNode.children
+                for (let i = 0; i < brothersAndMe.length; i++) {
+                    brothersAndMe[i].classList.remove('highlight')
+                }
+                li.classList.add('highlight')
+            }
+
+
+            let liTags = document.querySelectorAll('nav.menu > ul > li')
+            for (let i = 0; i < liTags.length; i++) {
+                liTags[i].onmouseenter = function (x) {
+                    x.currentTarget.classList.add('active')
+                }
+                liTags[i].onmouseleave = function (x) {
+                    x.currentTarget.classList.remove('active')
+                }
+            }
+
+            function animate(time) {
+                requestAnimationFrame(animate);
+                TWEEN.update(time);
+            }
+            requestAnimationFrame(animate);
+            let aTags = document.querySelectorAll('nav.menu > ul > li > a')
+            for (let i = 0; i < aTags.length; i++) {
+                aTags[i].onclick = function (x) {
+                    x.preventDefault()
+                    let a = x.currentTarget
+                    let href = a.getAttribute('href')
+                    let element = document.querySelector(href)
+                    let rect = element.getBoundingClientRect()
+                    let top = element.offsetTop
+
+                    let currentTop = window.scrollY
+                    let targetTop = top - 80
+                    let s = targetTop - currentTop
+                    let coords = {
+                        y: currentTop
+                    }
+                    let t = Math.abs((s / 100) * 300)
+                    if (t > 500) {
+                        t = 500
+                    }
+
+                    var tween = new TWEEN.Tween(coords)
+                        .to({
+                            y: targetTop
+                        }, t)
+                        .easing(TWEEN.Easing.Quadratic.InOut)
+                        .onUpdate(function () {
+                            window.scrollTo(0, coords.y)
+                        })
+                        .start();
+                }
+            }
+        </script>
     </section>
 </body>
 
