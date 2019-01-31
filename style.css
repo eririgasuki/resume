@@ -495,4 +495,5 @@ section.portfolio .works>.small {
 .messageBoard > ol > li{
     padding: 16px;
     border-top: 1px solid #ddd;
+    word-break: break-all;
 }
