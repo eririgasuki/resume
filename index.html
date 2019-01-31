@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>resume</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js"></script>
     <script src="//at.alicdn.com/t/font_966949_6kc1ly7ra6j.js"></script>
     <style type="text/css">
         .icon {
@@ -285,6 +286,20 @@
             }
         </script>
     </section>
+    <section id="messageBoard" class="messageBoard">
+        <h2>留言</h2>
+        <form id="message" class="message">
+            <label for="">姓名</label>
+            <input type="text" name="name">
+            <label for="">内容</label>
+            <input type="text" name="content">
+            <input type="submit" value="提交">
+        </form>
+        <ol id="messageList">
+
+        </ol>
+    </section>
+    <script src="/message.js"></script>
 </body>
 
 </html>

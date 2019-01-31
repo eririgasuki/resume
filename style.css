@@ -480,3 +480,19 @@ section.portfolio .works>.small {
         opacity: 0;
     }
 }
+
+.messageBoard{
+    width: 940px;
+    margin: 100px auto;
+}
+.messageBoard > h2 {
+    text-align: center;
+    font-size: 36px;
+}
+.messageBoard > .message {
+    margin: 50px 0;
+}
+.messageBoard > ol > li{
+    padding: 16px;
+    border-top: 1px solid #ddd;
+}
